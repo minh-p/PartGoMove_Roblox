@@ -23,7 +23,7 @@ local function partGoMove(part, numberOfTimeToChangeCFrame)
         local randomYPosition = math.random(5, 12)
 
         local randomRotation = CFrame.Angles(math.random(1, 10), math.random(1, 10), math.random(1, 10))
-        part.CFrame = CFrame.new(Vector3.new(0, math.random(5, 15), 0)) * randomRotation
+        part.CFrame = CFrame.new(Vector3.new(0, randomYPosition, 0)) * randomRotation
         wait(1)
     end
 end
