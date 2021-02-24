@@ -15,13 +15,15 @@ local function createPart(parentOfPart)
 end
 
 
-local function partGoMove(part, numberOfTimeToChangePosition)
+local function partGoMove(part, numberOfTimeToChangeCFrame)
     if not part then return end
-    numberOfTimeToChangePosition = numberOfTimeToChangePosition or 10
+    numberOfTimeToChangeCFrame = numberOfTimeToChangeCFrame or 10
 
-    for _ = 0, numberOfTimeToChangePosition do
+    for _ = 0, numberOfTimeToChangeCFrame do
         local randomYPosition = math.random(5, 12)
-        part.Position = Vector3.new(0, randomYPosition, 0)
+
+        local randomRotation = CFrame.Angles(math.random(1, 10), math.random(1, 10), math.random(1, 10))
+        part.CFrame = CFrame.new(Vector3.new(0, math.random(5, 15), 0)) * randomRotation
         wait(1)
     end
 end
