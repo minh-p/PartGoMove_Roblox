@@ -6,6 +6,16 @@
 
 -- Creating a part that will do fun stuff!
 
+-- Services Needed:
+local TweenService = game:GetService("TweenService")
+
+-- //Variables\\
+
+-- TweenInfo
+local tweenInfo = TweenInfo.new(1)
+
+-- //Functions\\
+
 local function createPart(parentOfPart)
     local newPart = Instance.new("Part")
     newPart.Name = "Generated Part"
@@ -23,7 +33,13 @@ local function partGoMove(part, numberOfTimeToChangeCFrame)
         local randomYPosition = math.random(5, 12)
 
         local randomRotation = CFrame.Angles(math.random(1, 10), math.random(1, 10), math.random(1, 10))
-        part.CFrame = CFrame.new(Vector3.new(0, randomYPosition, 0)) * randomRotation
+
+        local partTweeningProperty = {
+            CFrame = CFrame.new(Vector3.new(0, randomYPosition, 0)) * randomRotation
+        }
+
+        TweenService:Create(part, tweenInfo, partTweeningProperty):Play()
+        
         wait(1)
     end
 end
